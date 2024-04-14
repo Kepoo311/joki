@@ -1,0 +1,28 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Autour+One&family=Montserrat:wght@300&family=Nunito&family=Poppins:ital,wght@0,200;1,300&family=Quicksand&display=swap");
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.smooth-scroll{
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #0d2a4d; 
+    border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #0d2a4d6d;
+}
+
+body::-webkit-scrollbar-track {
+    background: #0e1f34;
+}
