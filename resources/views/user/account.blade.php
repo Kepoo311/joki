@@ -54,7 +54,7 @@
                         <h1 class="text-center font-poppins text-white text-5xl"> {{ $ortal }} </h1>
                         <h3 class="font-poppins text-md text-white text-center mt-2">Total order</h3>
                         <h4 class="font-poppins text-sm text-white text-center">
-                            {{ $ortal > 0 ? 'Keep it up kiddo!' : "You haven't ordered anything yet!" }}</h4>
+                            {{ $ortal > 0 ? 'Keep it up kiddo!' : "You haven't ordered anything yet!!" }}</h4>
                     </div>
 
                     <div class=" m-3">
