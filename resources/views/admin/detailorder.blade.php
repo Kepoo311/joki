@@ -1,10 +1,10 @@
 @extends('layouts.dash')
 
 @section('content')
-    <div class="bg-[rgb(254,221,89)] h-dvh">
-        <ul class="col-span-3 flex flex-col">
-            <section class="bg-[rgb(161,147,90)] h-fit w-full shadow-lg overflow-hidden flex flex-col mb-5">
-                <header class="h-[3.5rem] w-full bg-[rgb(130,121,85)] grid grid-cols-4 lg:grid-cols-12">
+    <div class="bg-[#0a0e18] h-full">
+        <ul class="col-span-3 flex flex-col px-4">
+            <section class="bg-[#0e1f34] h-fit w-full shadow-lg rounded-xl overflow-hidden flex flex-col mb-5">
+                <header class="h-[3.5rem] w-full bg-[#142f4d]] grid grid-cols-4 lg:grid-cols-12">
                     <div class="bg-gray-800 w-16 flex justify-center items-center">
                         <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">1</p>
                     </div>
@@ -16,13 +16,13 @@
                         <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <label class="block mb-2 text-white font-monts font-medium" for="IdNick">ID & Nickname
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md placeholder:text-white"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
                                     type="text" name="nickname" id="IdNick" placeholder="Masukkan Id & Nickname Mu"
                                     value="{{ $orderan->nickname }}" disabled>
                             </label>
                             <label class="block mb-2 text-white font-monts font-medium" for="logvia">Login Via
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md placeholder:text-white"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
                                     type="text" name="logVia" id="logVia" placeholder="Login Via?....."
                                     value="{{ $orderan->logVia }}" disabled>
                             </label>
@@ -30,13 +30,13 @@
                         <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label class="block mb-2 text-white font-monts font-medium" for="email">Email
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md placeholder:text-white placeholder:text-sm"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white placeholder:text-sm"
                                     type="text" name="email" id="email" placeholder="Your email...."
                                     value="{{ $orderan->email }}" disabled>
                             </label>
                             <label class="block mb-2 text-white font-monts font-medium" for="password">Password
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md placeholder:text-white placeholder:text-sm"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white placeholder:text-sm"
                                     type="text" name="password" id="password" placeholder="Your password...."
                                     value="{{ $orderan->password }}" disabled>
                             </label>
@@ -44,21 +44,21 @@
                         <div class="mb-6  grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label class="block mb-2 text-white font-monts font-medium" for="hero">Req Hero
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md font-monts placeholder:text-white placeholder:text-sm"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
                                     type="text" name="reqHero" id="hero" placeholder="Your hero...."
                                     value="{{ $orderan->reqHero }}" disabled>
                             </label>
                             <label class="block mb-2 text-white font-monts font-medium" for="pesan">Pesan
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md font-monts placeholder:text-white placeholder:text-sm"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
                                     type="text" name="pesan" id="pesan" placeholder="Pesan buat penjoki...."
                                     value="{{ $orderan->pesan }}" disabled>
                         </div>
                     </div>
                 </main>
             </section>
-            <section class="bg-[rgb(161,147,90)] h-fit w-full shadow-lg overflow-hidden flex flex-col mb-5">
-                <header class="h-[3.5rem] w-full bg-[rgb(130,121,85)] grid grid-cols-4 lg:grid-cols-12">
+            <section class="bg-[#0e1f34] h-fit w-full shadow-lg rounded-xl overflow-hidden flex flex-col mb-5">
+                <header class="h-[3.5rem] w-full bg-[#142f4d]] grid grid-cols-4 lg:grid-cols-12">
                     <div class="bg-gray-800 w-16 flex justify-center items-center">
                         <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">2</p>
                     </div>
@@ -70,7 +70,7 @@
                         <main>
                             <label class="block mb-2 text-white font-monts font-medium" for="telpon">Telpon number
                                 <input
-                                    class="bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md placeholder:text-white"
+                                    class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
                                     type="text" name="noTelpon" id="telpon" placeholder="Your telpon number...."
                                     value="{{ $orderan->noTelpon }}" disabled>
                             </label>

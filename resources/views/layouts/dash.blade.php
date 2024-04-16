@@ -16,11 +16,11 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{asset('webp/logo_arceus.webp')}}" class="h-10" alt="Arceus Logo" />
-                <span class="self-center text-2xl font-autur font-semibold whitespace-nowrap dark:text-white">Dashboard</span>
+                <span class="self-center text-2xl font-autur font-semibold whitespace-nowrap text-white">Dashboard</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button type="button"
-                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-600"
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
@@ -28,35 +28,35 @@
                         alt="user photo">
                 </button>
                 <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                <div class="z-50 hidden my-4 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600"
                     id="user-dropdown">
                     @auth
                     <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">{{auth()->user()->fullname}}</span>
+                        <span class="block text-sm text-white">{{auth()->user()->fullname}}</span>
                         <span
-                            class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{auth()->user()->email}}</span>
+                            class="block text-sm  truncate text-gray-400">{{auth()->user()->email}}</span>
                     </div>
                     @endauth
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
                             <a href="/"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Main Menu</a>
+                                class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Main Menu</a>
                         </li>
                         <li>
                             <a href="/user/dash"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Setting</a>
+                                class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Setting</a>
                         </li>
                         <li>
                             <form action="/logout" method="post">
                                 @csrf
-                                <button class="px-4 w-full flex justify-start py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                <button class="px-4 w-full flex justify-start py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">
                                     Sign out</button>
                             </form>
                         </li>
                     </ul>
                 </div>
                 <button data-collapse-toggle="navbar-user" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
                     aria-controls="navbar-user" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -68,47 +68,47 @@
             </div>
             <div class="items-center justify-between hidden w-full md:hidden md:w-auto md:order-1" id="navbar-user">
                 <ul
-                    class="flex flex-col font-medium md:p-0 mt-4 border md:mr-44 border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black dark:border-gray-700">
+                    class="flex flex-col font-medium md:p-0 mt-4 border md:mr-44 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-black md:bg-black border-gray-700">
                     <li>
                         <a href="/admin"
-                        class="block py-2 px-3 text-white {{Request::is('admin') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} rounded md:bg-transparent md:text-blue-700 md:p-0"
+                        class="block py-2 px-3 text-white {{Request::is('admin') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} rounded md:bg-transparent md:text-blue-700 md:p-0"
                         aria-current="page"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     @hasrole('admin')
                     <li>
                         <a href="/admin/user"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('user') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-users"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('user') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-users"></i>
                             Users
                         </a>
                     </li>
                     <li>
                         <a href="/admin/support"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('support') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-headset"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('support') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-headset"></i>
                             Support Center
                         </a>
                     </li>
                     <li>
                         <a href="/admin/logs"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('logs') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-history"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('logs') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-history"></i>
                             Activity Logs
                         </a>
                     </li>
                     @endhasrole
                     <li>
                         <a href="/admin/customer"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('customer') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-shopping-cart"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('customer') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-shopping-cart"></i>
                             Customers
                         </a>
                     </li>
                     <li>
                         <a href="/admin/ongoing"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('ongoing') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-spinner"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('ongoing') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-spinner"></i>
                             Ongoing Order
                         </a>
                     </li>
                     <li>
                         <a href="/admin/order_complete"
-                            class="block py-2 px-3 md:p-0 text-white {{Request::is('order_complete') ? 'bg-blue-700 hover:bg-blue-800' : 'hover:bg-gray-700'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-check"></i>
+                            class="block py-2 px-3 md:p-0 text-white {{Request::is('order_complete') ? 'md:text-blue-700 bg-blue-700' : 'md:hover:text-blue-700 text-white hover:bg-gray-500'}} md:hover:text-blue-500 hover:text-white md:hover:bg-transparent border-gray-700"><i class="fas fa-check"></i>
                             Order Complete
                         </a>
                     </li>
@@ -118,7 +118,7 @@
     </nav>
 
     <section class="grid grid-cols-5 h-full">
-        <aside class="bg-[#CEB23D] hidden md:flex flex-col">
+        <aside class="bg-gray-800 hidden md:flex flex-col">
             <ul class="p-5">
             <li class="mb-5"><a class="font-semibold font-poppins text-lg hover:bg-[rgba(255,255,255,0)] text-white {{Request::is('admin') ? 'underline underline-offset-4' : ''}} hover:text-gray-200" href="/admin"><i class="fas fa-home"></i> Dashboard</a></li>
             @hasrole('admin')
@@ -131,7 +131,7 @@
             <li class="mb-5"><a class="font-semibold font-poppins text-lg text-white hover:text-gray-200 {{Request::is('order_complete') ? 'underline underline-offset-4' : ''}}" href="/admin/order_complete"><i class="fas fa-check"></i> Order Complete</a></li>
             </ul>
         </aside>
-        <main class="col-span-5 md:col-span-4">
+        <main class="col-span-5 md:col-span-4 bg-[#FAFAFA]">
             @yield('content')
         </main>
     </section>

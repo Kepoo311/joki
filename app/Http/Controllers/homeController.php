@@ -48,8 +48,7 @@ class homeController extends Controller
     public function riwayat(){
         return view('home.riwayat',[
             "title" => "Riwayat Pembelian",
-            "riwayat" => Order::latest()->paginate(10),
-            "riwayatDone" => orderDone::latest()->paginate(10)
+            "riwayat" => Order::latest()->paginate(10)
         ]);
     }
 

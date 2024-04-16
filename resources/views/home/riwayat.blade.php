@@ -46,23 +46,9 @@
                     </td>
                 </tr>
                 @endforeach
-                @foreach ($riwayatDone as $item)
-                <tr class="odd:bg-[#0e1f34] even:bg-[#1b2b3d] text-white border-yellow-400 border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-300 whitespace-nowrap">
-                        {{$item->nickname}}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{$item->rank}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$item->status}}
-                    </td>
-                </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
     {{$riwayat->links()}}
-    {{$riwayatDone->links()}}
 </section>
 @endsection

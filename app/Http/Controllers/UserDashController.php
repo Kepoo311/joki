@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\orderDone;
+use App\Models\Order;
 use App\Models\Riview;
 use App\Models\RiviewAuth;
 use App\Models\User;
@@ -15,7 +15,7 @@ class UserDashController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-        $ortal = orderDone::where('customer_id', $id);
+        $ortal = Order::where('customer_id', $id)->where('status', 'Done');
 
         return view('user.account', [
             'title' => "User Dashboard",

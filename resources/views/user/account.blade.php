@@ -194,7 +194,7 @@
                     <section class="m-3 p-2 h-fit w-80 bg-gray-800 shadow-xl rounded-md">
 
                         <div class="flex flex-col border-b-2 py-5">
-                            <img class="rounded-full w-20 h-20 self-center" src="{{ $riview->product->img }}"
+                            <img class="rounded-full w-20 h-20 self-center" src="{{ asset("proCard/".$riview->product->img) }}"
                                 alt="">
                             <h3 class="font-poppins text-md text-white text-center mt-2">{{ $riview->product->name }}</h3>
                             <h4 class="font-poppins text-sm text-white text-center">{{ $riview->rank }}</h4>

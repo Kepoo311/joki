@@ -24,7 +24,7 @@ class DashController extends Controller
     public function index()
     {
         if (auth()->user()->hasAnyRole(["admin", "worker"])) {
-            $prices = orderDone::all();
+            $prices = Order::where("status", "=", "Done")->get();
             $total = 0;
             foreach ($prices as $price) {
                 $total += $price->harga;
@@ -39,9 +39,9 @@ class DashController extends Controller
             return view("admin.index", [
                 "title" => "Welcome to Dashboard",
                 "totalEarn" => $total,
-                "ongoOrders" => ongoing::count(),
-                "pendingOrders" => Order::count(),
-                "orderDones" => orderDone::count()
+                "ongoOrders" => Order::where("status", "=", "On-Going")->count(),
+                "pendingOrders" => Order::where("status", "=", "Pending")->count(),
+                "orderDones" => Order::where("status", "=", "Done")->count()
             ]);
         }
 
@@ -113,16 +113,16 @@ class DashController extends Controller
     {
         return view('admin.customer', [
             "title" => "Our customer",
-            "customer" => Order::all()
+            "customer" => Order::where("status", "=", "Pending")->get()
         ]);
-    }
+    } 
 
     public function showOngo()
     {
         $userid = Auth::user()->id;
         return view("admin.ongoing", [
             "title" => "Ongoing order",
-            "orderan" => ongoing::where("user_id", "=", $userid)->get()
+            "orderan" => Order::where("user_id", "=", $userid)->where("status", "=", "On-Going")->get()
         ]);
     }
 
@@ -131,23 +131,15 @@ class DashController extends Controller
         $userid = Auth::user()->id;
         return view("admin.order_done", [
             "title" => "Order Completed",
-            "orderan" => orderDone::where("user_id", "=", $userid)->get()
+            "orderan" => Order::where("user_id", "=", $userid)->where("status", "=", "Done")->get()
         ]);
     }
 
     public function showDetail(Request $request)
     {
         $id = $request->id;
-        $status = $request->status;
 
-        if ($status == "Pending") {
-            $orderan = Order::findOrFail($id);
-        } elseif ($status == "On-Going") {
-            $orderan = ongoing::findOrFail($id);
-        } elseif ($status == "DONE") {
-            $orderan = orderDone::findOrFail($id);
-        }
-
+        $orderan = Order::findOrFail($id);
 
         return view("admin.detailorder", [
             'title' => 'Detail of Order',
@@ -157,52 +149,23 @@ class DashController extends Controller
 
     public function takeOrder(Order $orderan)
     {
-        ongoing::create([
-            'user_id' => Auth::user()->id,
-            'customer_id' => $orderan->customer_id,
-            'product_id' => $orderan->product_id,
-            'nickname' => $orderan->nickname,
-            'logVia' => $orderan->logVia,
-            'email' => $orderan->email,
-            'password' => $orderan->password,
-            'reqHero' => $orderan->reqHero,
-            'pesan' => $orderan->pesan,
-            'paket-joki' => $orderan->rank,
-            'rank' => $orderan->rank,
-            'harga' => $orderan->harga,
-            'payment' => $orderan->payment,
-            'noTelpon' => $orderan->noTelpon,
-            'status' => "On-Going"
-        ]);
+        $orderan->user_id = Auth::user()->id;
+        $orderan->status = "On-Going";
+        $orderan->save();
+
         Logging::create([
             "userid" => auth()->user()->id,
             "username" => auth()->user()->username,
             "role" => auth()->user()->getRoleNames(),
             "activity" => "Mengambil Order Dari : $orderan->nickname",
         ]);
-        Order::destroy($orderan->id);
 
         return redirect('/admin/ongoing')->with('SuccesTakeOrder', "ORDERAN SUCCES DI AMBIL COY");
     }
-    public function doneOrder(ongoing $orderan)
+    public function doneOrder(Order $orderan)
     {
-        orderDone::create([
-            'user_id' => Auth::user()->id,
-            'customer_id' => $orderan->customer_id,
-            'product_id' => $orderan->product_id,
-            'nickname' => $orderan->nickname,
-            'logVia' => $orderan->logVia,
-            'email' => $orderan->email,
-            'password' => $orderan->password,
-            'reqHero' => $orderan->reqHero,
-            'pesan' => $orderan->pesan,
-            'paket-joki' => $orderan->rank,
-            'rank' => $orderan->rank,
-            'harga' => $orderan->harga,
-            'payment' => $orderan->payment,
-            'noTelpon' => $orderan->noTelpon,
-            'status' => "DONE"
-        ]);
+        $orderan->status = "DONE";
+        $orderan->save();
  
         if (!is_null($orderan->customer_id)) {
             RiviewAuth::create([
@@ -219,8 +182,6 @@ class DashController extends Controller
             "role" => auth()->user()->getRoleNames(),
             "activity" => "Menyelesaikan Order Dari : $orderan->nickname",
         ]);
-
-        ongoing::destroy($orderan->id);
 
         return redirect('/admin/order_complete')->with('SuccesComplete', "ORDERAN SUCCES DI SELESAIKAN COY");
     }
