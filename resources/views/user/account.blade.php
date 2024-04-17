@@ -186,7 +186,7 @@
         <div id="riview" class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
 
             <header>
-                <h1 class="font-poppins font-semibold text-xl">Riview</h1>
+                <h1 class="font-poppins font-semibold text-xl">Feedback</h1>
             </header>
 
             <div class="grid justify-items-center grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
@@ -203,13 +203,10 @@
                         <div class="m-3">
                             <a href="/user/riview?token={{ $riview->token }}"
                                 class="bg-red-600 py-2 px-4 text-white font-poppins shadow-md rounded-md hover:bg-red-700">
-                                Riview </a>
+                                Feedback </a>
                         </div>
                     </section>
                 @endforeach
-            </div>
-
-
         </div>
     </div>
 @endsection

@@ -50,9 +50,11 @@
                     <div class="flex flex-col" >
                     <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
                         <div class="bg-gray-800 w-16 flex justify-center items-center">
-                            <p class="text-[rgb(255,215,0)]"><i class="fas fa-star"></i></p>
+                            <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                            </svg>
                         </div>
-                        <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Ulasan Pembeli</span>
+                        <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
                     </header>
                     <main class="h-full flex flex-col">
                         @if(count($riviews) > 0)
@@ -61,7 +63,19 @@
                         <div class="p-3 mb-3 flex flex-col">
                             <header class="grid grid-cols-2 font-poppins text-white">
                                 <p class="text-sm font-bold">{{Str::limit($riview->noTelp,4,'********')}}</p>
-                                <p class="text-sm justify-self-end">{{$riview->bintang}} <i class="fas fa-star text-[rgb(255,215,0)]"></i></p>
+                                <p class="text-sm justify-self-end flex">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $riview->bintang) 
+                                    <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                                    </svg>
+                                    @else
+                                    <svg class="w-6 h-6 fill-current text-gray-400" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                                    </svg>
+                                    @endif
+                                @endfor
+                                </p>
                                 <p class="text-sm">{{$riview->rank}}</p>
                                 <p class="justify-self-end text-sm">{{$riview->created_at->diffForHumans()}}</p>
                             </header>
@@ -271,9 +285,11 @@
                         <div class="flex flex-col" >
                         <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
                             <div class="bg-gray-800 w-16 flex justify-center items-center">
-                                <p class="text-[rgb(255,215,0)]"><i class="fas fa-star"></i></p>
+                                <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                                </svg>
                             </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Ulasan Pembeli</span>
+                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
                         </header>
                         <main class="h-full flex flex-col overflow-auto">
                             @if(count($riviews) > 0)
@@ -282,8 +298,20 @@
                             <div class="p-3 mb-3 flex flex-col">
                                 <header class="grid grid-cols-2 font-poppins text-white">
                                     <p class="text-sm font-bold">{{Str::limit($riview->noTelp,4,'********')}}</p>
-                                    <p class="text-sm justify-self-end">{{$riview->bintang}} <i class="fas fa-star text-[rgb(255,215,0)]"></i></p>
-                                    <p class="text-sm">{{$riview->rank}}</p>
+                                    <p class="text-sm justify-self-end flex">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $riview->bintang) 
+                                            <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                                            </svg>
+                                            @else
+                                            <svg class="w-6 h-6 fill-current text-gray-400" viewBox="0 0 24 24">
+                                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
+                                            </svg>
+                                            @endif
+                                        @endfor
+                                        </p>
+                                        <p class="text-sm">{{$riview->rank}}</p>
                                     <p class="justify-self-end text-sm">{{$riview->created_at->diffForHumans()}}</p>
                                 </header>
                                 <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">

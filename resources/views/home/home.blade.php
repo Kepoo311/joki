@@ -10,7 +10,7 @@
                     <button class="text-2xl mr-2" id="pop_jok_button"><i class="fas fa-times"></i></button>
                 </div>
                 <video autoplay loop muted>
-                    <source src="{{ asset("webm/succes.webm") }}" type="video/webm">
+                    <source src="{{ asset('webm/succes.webm') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
 
@@ -70,14 +70,14 @@
                         @endforeach
                     </section>
 
-                    <div class="fixed bottom-24">
-                        <form action="/kirim" method="POST">
+                    <div class="fixed bottom-23">
+                        <form class="flex" action="/kirim" method="POST">
                             @csrf
-                            <input name="message" class="mx-2 w-72 rounded-lg" type="text">
-                            <button type="submit" class="bg-blue-300 py-2 px-5 rounded-lg shadow-xl hover:bg-blue-400"><i
+                            <textarea name="message" class="mx-2 w-72 rounded-lg" type="text" rows="1"></textarea>
+                            <button type="submit" class="bg-blue-300 py-2 px-7 rounded-lg shadow-xl hover:bg-blue-400"><i
                                     class="fas fa-paper-plane"></i></button>
-                            <p class="text-center font-poppins text-sm">Pls dont send anyting sensitive!!</p>
                         </form>
+                        <p class="text-center font-poppins text-sm">Pls dont send anyting sensitive!!</p>
                     </div>
                 </div>
             @else
@@ -116,40 +116,37 @@
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                            <video class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" autoplay loop muted>
-                                <source src="{{ asset("webp/banner4.mp4") }}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                        <video class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" autoplay loop
+                            muted>
+                            <source src="{{ asset('webp/banner4.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner5.webp') }}"
-                            loading="lazy"
+                        <img src="{{ asset('webp/banner5.webp') }}" loading="lazy"
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner1.webp') }}"
-                        loading="lazy"
+                        <img src="{{ asset('webp/banner1.webp') }}" loading="lazy"
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner2.webp') }}"
-                        loading="lazy"
+                        <img src="{{ asset('webp/banner2.webp') }}" loading="lazy"
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 4 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner3.webp') }}"
-                        loading="lazy"
+                        <img src="{{ asset('webp/banner3.webp') }}" loading="lazy"
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
@@ -196,9 +193,9 @@
     </section>
 
     <section class="bg-[#0e1f34] w-full">
-        
+
         <nav class="p-5 flex flex-rowd gap-1 overflow-auto hide-scrollbar smooth-scroll">
-            <a class="{{ Request::is("/") ? 'bg-[#264977] hover:bg-[#233a57]' : 'bg-[#233a57] hover:bg-[#264977]' }} duration-500 border border-[rgba(0,0,0,0.25)] whitespace-nowrap focus:ring-2 focus:ring-black text-white font-poppins rounded-3xl p-2 md:p-3 md:text-md text-[0.8rem]"
+            <a class="{{ Request::is('/') ? 'bg-[#264977] hover:bg-[#233a57]' : 'bg-[#233a57] hover:bg-[#264977]' }} duration-500 border border-[rgba(0,0,0,0.25)] whitespace-nowrap focus:ring-2 focus:ring-black text-white font-poppins rounded-3xl p-2 md:p-3 md:text-md text-[0.8rem]"
                 href="/">Show all</a>
             @foreach ($category as $item)
                 <a class="{{ Request::is("$item->name/atk") ? 'bg-[#264977] hover:bg-[#233a57]' : 'bg-[#233a57] hover:bg-[#264977]' }} duration-500 border border-[rgba(0,0,0,0.25)] whitespace-nowrap focus:ring-2 focus:ring-black text-white font-poppins rounded-3xl p-2 md:p-3 md:text-md text-[0.8rem]"
@@ -226,8 +223,8 @@
                         <p class="absolute text-white font-bold text-lg font-monts inset-x-7 bottom-7 w-auto">
                             {{ $product->name }}</p>
                     </div>
-                    <img loading="lazy" class="h-72 max-md:h-60 w-auto self-end" src="{{ asset("proCard/$product->img") }}"
-                        alt="">
+                    <img loading="lazy" class="h-72 max-md:h-60 w-auto self-end"
+                        src="{{ asset("proCard/$product->img") }}" alt="">
                 </a>
             </section>
         @else
@@ -241,14 +238,15 @@
                                 {{ $product->name }}</p>
                         </div>
                         <img class="h-56 max-md:h-44 w-auto self-end" src="{{ asset("proCard/$product->img") }}"
-                        loading="lazy" alt="">
+                            loading="lazy" alt="">
                     </a>
                 @endforeach
             </section>
         @endif
 
         <footer class="flex items-end justify-center h-52">
-            <img loading="lazy" class="absolute h-32 md:h-52 w-auto" src="{{ asset('webp/baKITA.webp') }}" alt="">
+            <img loading="lazy" class="absolute h-32 md:h-52 w-auto" src="{{ asset('webp/baKITA.webp') }}"
+                alt="">
         </footer>
     </section>
 
