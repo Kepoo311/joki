@@ -2,17 +2,17 @@
 
 @section('content')
     <section class="bg-[#0a0e18]">
-       
+
         <section>
             <div class="flex justify-center items-center h-56 lg:h-[340px] w-full overflow-hidden">
-                <img class="" sizes="100dvw" src="{{asset("webp/banner_det.webp")}}" alt="">
+                <img class="" sizes="100dvw" src="{{ asset('webp/banner_det.webp') }}" alt="">
             </div>
             <div class="flex items-center justify-start overflow-visible bg-[#19304e] h-36">
                 <img class="inline-block shadow-md -skew-y-12 lg:translate-x-36 -translate-y-14 h-auto w-40 rounded-lg m-3"
-                    src="{{asset("proCard/$product->img")}}" alt="">
+                    src="{{ asset("proCard/$product->img") }}" alt="">
                 <article class="block -translate-y-5 lg:translate-x-36">
-                    <h1 class="inline-block font-nunito font-bold text-2xl text-gray-100">{{$product->name}}</h1>
-                    <h1 class="block font-nunito font-bold text-xl text-gray-100">{{$product->game->name}}</h1>
+                    <h1 class="inline-block font-nunito font-bold text-2xl text-gray-100">{{ $product->name }}</h1>
+                    <h1 class="block font-nunito font-bold text-xl text-gray-100">{{ $product->game->name }}</h1>
                     <div class="mt-3">
                         <p class="text-md inline-block text-gray-200 font-poppins font-medium mr-5"><i
                                 class="fa-solid fa-headset"></i> Pelayanan Ngebut </p>
@@ -36,8 +36,8 @@
                         <li>6) Klik Pesan Sekarang dan lakukan Pembayaran</li>
                         <li>7) Selesai</li>
                         <li class="mt-5">Rule Joki : </li>
-                        @foreach($rules as $rule)
-                        <li> - {{$rule->rules}}</li>
+                        @foreach ($rules as $rule)
+                            <li> - {{ $rule->rules }}</li>
                         @endforeach
                         <li class="font-bold text-center text-red-700 mt-8">Disclaimer: <p class="inline-block text-white">
                                 Nomor WhatsApp Joki Arceus Hanya Yang Tertera Di Website!!!</p>
@@ -47,63 +47,68 @@
                     </ol>
                 </section>
                 <section class="bg-[#0e1f34] h-[30rem] rounded-xl hidden md:block  w-full shadow-lg overflow-auto">
-                    <div class="flex flex-col" >
-                    <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
-                        <div class="bg-gray-800 w-16 flex justify-center items-center">
-                            <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                            </svg>
-                        </div>
-                        <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
-                    </header>
-                    <main class="h-full flex flex-col">
-                        @if(count($riviews) > 0)
-                        @foreach ($riviews as $riview)
-                            
-                        <div class="p-3 mb-3 flex flex-col">
-                            <header class="grid grid-cols-2 font-poppins text-white">
-                                <p class="text-sm font-bold">{{Str::limit($riview->noTelp,4,'********')}}</p>
-                                <p class="text-sm justify-self-end flex">
-                                @for ($i = 1; $i <= 5; $i++)
-                                    @if ($i <= $riview->bintang) 
-                                    <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
-                                        <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                                    </svg>
-                                    @else
-                                    <svg class="w-6 h-6 fill-current text-gray-400" viewBox="0 0 24 24">
-                                        <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                                    </svg>
-                                    @endif
-                                @endfor
-                                </p>
-                                <p class="text-sm">{{$riview->rank}}</p>
-                                <p class="justify-self-end text-sm">{{$riview->created_at->diffForHumans()}}</p>
-                            </header>
-                            <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">
-                                <p class="w-[295px]">"{{$riview->comment}}"</p>
-                            </main>
-                        </div>
-                        
-                        @endforeach
-                        @else
-                        <p class="text-center mt-10 font-poppins font-semibold text-white">Belum ada ulasan :/</p>
-                        @endif
-                    </main>
-                </div>
+                    <div class="flex flex-col">
+                        <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
+                            <div class="bg-gray-800 w-16 flex justify-center items-center">
+                                <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
+                        </header>
+                        <main class="h-full flex flex-col">
+                            @if (count($riviews) > 0)
+                                @foreach ($riviews as $riview)
+                                    <div class="p-3 mb-3 flex flex-col">
+                                        <header class="grid grid-cols-2 font-poppins text-white">
+                                            <p class="text-sm font-bold">{{ Str::limit($riview->noTelp, 4, '********') }}</p>
+                                            <p class="text-sm justify-self-end flex">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= $riview->bintang)
+                                                        <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]"
+                                                            viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                                        </svg>
+                                                    @else
+                                                        <svg class="w-6 h-6 fill-current text-gray-400" viewBox="0 0 24 24">
+                                                            <path
+                                                                d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                                        </svg>
+                                                    @endif
+                                                @endfor
+                                            </p>
+                                            <p class="text-sm">{{ $riview->rank }}</p>
+                                            <p class="justify-self-end text-sm">{{ $riview->created_at->diffForHumans() }}
+                                            </p>
+                                        </header>
+                                        <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">
+                                            <p class="w-[295px]">"{{ $riview->comment }}"</p>
+                                        </main>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p class="text-center mt-10 font-poppins font-semibold text-white">Belum ada ulasan :/</p>
+                            @endif
+                        </main>
+                    </div>
                 </section>
             </div>
             <ul class="col-span-3 flex flex-col">
                 <form class="h-fit" action="/order" method="post">
                     @csrf
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                    <section
-                        class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
+                    <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
                         <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">
                             <div class="bg-gray-800 w-16 flex justify-center items-center">
                                 <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">1</p>
                             </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Masukkan data
+                            <span
+                                class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Masukkan
+                                data
                                 akun</span>
                         </header>
                         <main class="h-full flex flex-col overflow-auto">
@@ -114,18 +119,20 @@
                                             class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
                                             type="text" name="nickname" id="IdNick"
                                             placeholder="Masukkan Id & Nickname Mu">
-                                            @error('nickname')
-                                                {{$message}}
-                                            @enderror
+                                        @error('nickname')
+                                            {{ $message }}
+                                        @enderror
                                     </label>
                                     <label class="block mb-2 text-white font-monts font-medium" for="logvia">Login Via
-                                        <input
-                                            class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
-                                            type="text" name="logVia" id="logVia"
-                                            placeholder="Login Via?.....">
+                                        <select id="logVia" name="logVia"
+                                            class="bg-[#2d558a] border-1 w-full p-2.5 border-blue-800 rounded-md placeholder:text-white">
+                                            @foreach ($logins as $login)
+                                            <option value="{{$login->name}}">{{$login->name}}</option>
+                                            @endforeach
+                                        </select>
                                         @error('logVia')
-                                                {{$message}}
-                                            @enderror
+                                            {{ $message }}
+                                        @enderror
                                     </label>
                                 </div>
                                 <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -133,51 +140,53 @@
                                         <input
                                             class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white placeholder:text-sm"
                                             type="text" name="email" id="email" placeholder="Your email....">
-                                            @error('email')
-                                                {{$message}}
-                                            @enderror
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
                                     </label>
                                     <label class="block mb-2 text-white font-monts font-medium" for="password">Password
                                         <input
                                             class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white placeholder:text-sm"
                                             type="text" name="password" id="password" placeholder="Your password....">
-                                            @error('password')
-                                                {{$message}}
-                                            @enderror
+                                        @error('password')
+                                            {{ $message }}
+                                        @enderror
                                     </label>
                                 </div>
                                 <div class="mb-6  grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    @if($reqHero)
-                                    <label class="block mb-2 text-white font-monts font-medium" for="hero">Req Hero
-                                        <input
-                                            class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
-                                            type="text" name="reqHero" id="hero" placeholder="Your hero....">
+                                    @if ($reqHero)
+                                        <label class="block mb-2 text-white font-monts font-medium" for="hero">Req Hero
+                                            <input
+                                                class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
+                                                type="text" name="reqHero" id="hero"
+                                                placeholder="Your hero....">
                                             @error('reqHero')
-                                                {{$message}}
+                                                {{ $message }}
                                             @enderror
-                                    </label>
+                                        </label>
                                     @else
-                                    <input type="hidden" name="reqHero" value="null">
+                                        <input type="hidden" name="reqHero" value="null">
                                     @endif
                                     <label class="block mb-2 text-white font-monts font-medium" for="pesan">Pesan
                                         <input
                                             class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
-                                            type="text" name="pesan" id="pesan" placeholder="Pesan buat penjoki....">
-                                            @error('pesan')
-                                                {{$message}}
-                                            @enderror
+                                            type="text" name="pesan" id="pesan"
+                                            placeholder="Pesan buat penjoki....">
+                                        @error('pesan')
+                                            {{ $message }}
+                                        @enderror
                                     </label>
                                 </div>
                             </div>
                         </main>
                     </section>
-                    <section
-                        class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
+                    <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
                         <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">
                             <div class="bg-gray-800 w-16 flex justify-center items-center">
                                 <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">2</p>
                             </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Pilih paket</span>
+                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Pilih
+                                paket</span>
                         </header>
                         <main class="h-full flex flex-col overflow-auto">
                             <section class="h-fit mb-5 p-5">
@@ -187,57 +196,23 @@
                                 <main>
                                     <ul class="grid w-full gap-6 md:grid-cols-3">
                                         @foreach ($jasas as $item)
-                                        <li>
-                                            <input type="radio" id="{{$item->name}}" name="paket-joki"
-                                            value="{{$item->price}},{{$item->name}}" class="hidden peer" required>
-                                            <label for="{{$item->name}}"
-                                            class="inline-flex items-center w-full p-3 bg-[#18304e] text-gray-500 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-4 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-[#1b2d44]">
-                                            <div class="block">
-                                                <div class="w-full text-md font-poppins font-semibold text-white">{{$item->name}}</div>
-                                                <div class="w-full text-sm font-poppins font-bold text-blue-500">@uang($item->price)</div>
-                                            </div>
-                                            @error('paket-joki')
-                                                {{$message}}
-                                            @enderror
-                                        </label>
-                                    </li>
-                                    @endforeach
-                                    </ul>
-
-                                </main>
-                            </section>
-                        </main>
-                    </section>
-                    <section
-                        class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
-                        <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">
-                            <div class="bg-gray-800 w-16 flex justify-center items-center">
-                                <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">3</p>
-                            </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-96 flex items-center">Pilih metode pembayaran</span>
-                        </header>
-                        <main class="h-full flex flex-col overflow-auto">
-                            <section class="h-fit mb-5 p-5">
-                                <main>
-                                    <ul class="grid w-full gap-6 md:grid-cols-3">
-                                        @foreach ($payments as $payment)
-                                            
-                                        <li>
-                                            <input type="radio" id="{{$payment->payment_method}}" name="payment"
-                                                value="{{$payment->payment_method}}" class="hidden peer" required>
-                                            <label for="{{$payment->payment_method}}"
-                                                class="inline-flex items-center w-full p-3 bg-[#18304e] text-gray-500 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-[#1b2d44]">
-                                                <div class="flex">
-                                                    <img class="w-auto h-7 mr-2" src="{{$payment->img}}" alt="{{$payment->payment_method}}">
-                                                    <div class="w-full text-md font-poppins font-semibold text-white">{{$payment->payment_method}}</div>
-                                                </div>
-                                                @error('payment')
-                                                {{$message}}
-                                            @enderror
-                                            </label>
-                                        </li>
-
-                                        
+                                            <li>
+                                                <input type="radio" id="{{ $item->name }}" name="paket-joki"
+                                                    value="{{ $item->price }},{{ $item->name }}" class="hidden peer"
+                                                    required>
+                                                <label for="{{ $item->name }}"
+                                                    class="inline-flex items-center w-full p-3 bg-[#18304e] text-gray-500 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-4 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-[#1b2d44]">
+                                                    <div class="block">
+                                                        <div class="w-full text-md font-poppins font-semibold text-white">
+                                                            {{ $item->name }}</div>
+                                                        <div class="w-full text-sm font-poppins font-bold text-blue-500">
+                                                            @uang($item->price)</div>
+                                                    </div>
+                                                    @error('paket-joki')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </label>
+                                            </li>
                                         @endforeach
                                     </ul>
 
@@ -245,30 +220,70 @@
                             </section>
                         </main>
                     </section>
-                    <section
-                        class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
+                    <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
                         <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">
                             <div class="bg-gray-800 w-16 flex justify-center items-center">
-                                <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">4</p>
+                                <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">3</p>
                             </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-96 flex items-center">Masukkan no whatsApp</span>
+                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-96 flex items-center">Pilih
+                                metode pembayaran</span>
                         </header>
                         <main class="h-full flex flex-col overflow-auto">
                             <section class="h-fit mb-5 p-5">
                                 <main>
-                                    <label class="block mb-2 text-white font-monts font-medium" for="telpon">Telpon number
-                                        @if(auth()->user())
-                                        <input
-                                            class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
-                                            type="text" name="noTelpon" value="{{auth()->user()->noTelpon}}" id="telpon" placeholder="Your telpon number....">
+                                    <ul class="grid w-full gap-6 md:grid-cols-3">
+                                        @foreach ($payments as $payment)
+                                            <li>
+                                                <input type="radio" id="{{ $payment->payment_method }}" name="payment"
+                                                    value="{{ $payment->payment_method }}" class="hidden peer" required>
+                                                <label for="{{ $payment->payment_method }}"
+                                                    class="inline-flex items-center w-full p-3 bg-[#18304e] text-gray-500 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-[#1b2d44]">
+                                                    <div class="flex">
+                                                        <img class="w-auto h-7 mr-2" src="{{ $payment->img }}"
+                                                            alt="{{ $payment->payment_method }}">
+                                                        <div class="w-full text-md font-poppins font-semibold text-white">
+                                                            {{ $payment->payment_method }}</div>
+                                                    </div>
+                                                    @error('payment')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                </main>
+                            </section>
+                        </main>
+                    </section>
+                    <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
+                        <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">
+                            <div class="bg-gray-800 w-16 flex justify-center items-center">
+                                <p class="text-[rgb(255,215,0)] font-bold font-poppins text-2xl">4</p>
+                            </div>
+                            <span
+                                class="text-lg lg:text-xl font-poppins font-bold text-white w-96 flex items-center">Masukkan
+                                no whatsApp</span>
+                        </header>
+                        <main class="h-full flex flex-col overflow-auto">
+                            <section class="h-fit mb-5 p-5">
+                                <main>
+                                    <label class="block mb-2 text-white font-monts font-medium" for="telpon">Telpon
+                                        number
+                                        @if (auth()->user())
+                                            <input
+                                                class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
+                                                type="text" name="noTelpon" value="{{ auth()->user()->noTelpon }}"
+                                                id="telpon" placeholder="Your telpon number....">
                                             @error('noTelpon')
-                                                {{$message}}
+                                                {{ $message }}
                                             @enderror
-                                            @else<input
-                                            class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
-                                            type="text" name="noTelpon" id="telpon" placeholder="Your telpon number....">
+                                        @else<input
+                                                class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md placeholder:text-white"
+                                                type="text" name="noTelpon" id="telpon"
+                                                placeholder="Your telpon number....">
                                             @error('noTelpon')
-                                                {{$message}}
+                                                {{ $message }}
                                             @enderror
                                         @endif
                                     </label>
@@ -278,62 +293,71 @@
                     </section>
 
                     <section class="w-full h-fit mb-5">
-                        <button class="bg-[#19304e] p-3 rounded-lg w-full text-white font-bold font-poppins shadow-md hover:bg-[#1c273e] focus:ring-2 focus:ring-orange-600">Order Now</button>
+                        <button
+                            class="bg-[#19304e] p-3 rounded-lg w-full text-white font-bold font-poppins shadow-md hover:bg-[#1c273e] focus:ring-2 focus:ring-orange-600">Order
+                            Now</button>
                     </section>
 
                     <section class="bg-[#0e1f34] h-[30rem] rounded-xl block md:hidden mb-5 w-full shadow-lg overflow-auto">
-                        <div class="flex flex-col" >
-                        <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
-                            <div class="bg-gray-800 w-16 flex justify-center items-center">
-                                <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                                </svg>
-                            </div>
-                            <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
-                        </header>
-                        <main class="h-full flex flex-col overflow-auto">
-                            @if(count($riviews) > 0)
-                            @foreach ($riviews as $riview)
-                                
-                            <div class="p-3 mb-3 flex flex-col">
-                                <header class="grid grid-cols-2 font-poppins text-white">
-                                    <p class="text-sm font-bold">{{Str::limit($riview->noTelp,4,'********')}}</p>
-                                    <p class="text-sm justify-self-end flex">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($i <= $riview->bintang) 
-                                            <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                                            </svg>
-                                            @else
-                                            <svg class="w-6 h-6 fill-current text-gray-400" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z"/>
-                                            </svg>
-                                            @endif
-                                        @endfor
-                                        </p>
-                                        <p class="text-sm">{{$riview->rank}}</p>
-                                    <p class="justify-self-end text-sm">{{$riview->created_at->diffForHumans()}}</p>
-                                </header>
-                                <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">
-                                    <p class="w-[295px]">"{{$riview->comment}}"</p>
-                                </main>
-                            </div>
-                            
-                            @endforeach
-                            @else
-                            <p class="text-center mt-10 font-poppins font-semibold text-white">Belum ada ulasan :/</p>
-                            @endif
-                        
-                        </main>
-                    </div>
+                        <div class="flex flex-col">
+                            <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
+                                <div class="bg-gray-800 w-16 flex justify-center items-center">
+                                    <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Testimoni</span>
+                            </header>
+                            <main class="h-full flex flex-col overflow-auto">
+                                @if (count($riviews) > 0)
+                                    @foreach ($riviews as $riview)
+                                        <div class="p-3 mb-3 flex flex-col">
+                                            <header class="grid grid-cols-2 font-poppins text-white">
+                                                <p class="text-sm font-bold">
+                                                    {{ Str::limit($riview->noTelp, 4, '********') }}</p>
+                                                <p class="text-sm justify-self-end flex">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= $riview->bintang)
+                                                            <svg class="w-6 h-6 fill-current text-[rgb(255,215,0)]"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                                            </svg>
+                                                        @else
+                                                            <svg class="w-6 h-6 fill-current text-gray-400"
+                                                                viewBox="0 0 24 24">
+                                                                <path
+                                                                    d="M12 2l3.09 6.31L22 9.27l-5.46 5.32 1.29 7.51L12 18.77l-6.83 3.33 1.29-7.51L2 9.27l6.91-.96z" />
+                                                            </svg>
+                                                        @endif
+                                                    @endfor
+                                                </p>
+                                                <p class="text-sm">{{ $riview->rank }}</p>
+                                                <p class="justify-self-end text-sm">
+                                                    {{ $riview->created_at->diffForHumans() }}</p>
+                                            </header>
+                                            <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">
+                                                <p class="w-[295px]">"{{ $riview->comment }}"</p>
+                                            </main>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p class="text-center mt-10 font-poppins font-semibold text-white">Belum ada ulasan :/
+                                    </p>
+                                @endif
+
+                            </main>
+                        </div>
                     </section>
 
-                    
+
                 </form>
             </ul>
 
         </section>
     </section>
 
-    
+
 @endsection

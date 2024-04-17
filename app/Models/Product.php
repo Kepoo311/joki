@@ -33,6 +33,10 @@ class Product extends Model
         return $this->hasMany(JokiRule::class);
     }
 
+    public function loginVia(){
+        return $this->hasMany(LoginVia::class);
+    }
+
     public function scopeFilter($query, array $filters){
         $query->when($filters['product'] ?? false, function ($query, $product){
             return $query->where('name',$product);

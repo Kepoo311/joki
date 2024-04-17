@@ -60,7 +60,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             roleSeeder::class,
             RolePermisSeeder::class,
-            JokiRules::class
+            JokiRules::class,
+            LoginViaSeeder::class
         ]);
     }
 }

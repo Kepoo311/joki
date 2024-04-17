@@ -18,11 +18,13 @@ class DetailController extends Controller
         $jasa = $product->jasa;
         $riviews = $product->riview;
         $rules = $product->rules;
+        $logvia = $product->loginVia;
         return view('detail.index',[
             'title' => $product->name,
             'product' => $product,
             'jasas' => $jasa,
             'rules' => $rules,
+            'logins' => $logvia, 
             'payments' => payment::all(),
             'reqHero' => $reqHero,
             'riviews' => $riviews
