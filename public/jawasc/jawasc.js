@@ -9,6 +9,10 @@ const buttonorder = document.getElementById('pop_jok_button');
 const popup = document.getElementById('popup_awal');
 const buttonpop = document.getElementById('popup_button');
 
+const feedback_remind = document.getElementById('feedback_remind');
+const feedback_remind_close = document.getElementById('feedback_remind_close');
+
+
 if (sessionStorage.getItem('popup') == null) {
     body.style.overflowY = "hidden";
     popup.classList.remove("hidden");
@@ -23,6 +27,8 @@ if(sessionStorage.getItem('chat')=="open"){
     cardsupport.style.display = "flex";
 }
 
+
+if (popup){
 function togglePopup() {
     if (popup.classList.contains("flex")) {
         hidePopup();
@@ -56,7 +62,9 @@ buttonpop.addEventListener("click", () => {
     sessionStorage.setItem('popup', 'gas');
 });
 
+}
 
+if(buttonchat_open){
 
 buttonchat_open.addEventListener('click', ()=> {
     body.style.overflowY="hidden"; 
@@ -71,11 +79,54 @@ body.style.overflowY="scroll";
 sessionStorage.setItem('chat', 'close');
 buttonchat_open.classList.remove("hidden");
 });
+}
 
+if(buttonorder) {
 buttonorder.addEventListener("click", ()=> {
     body.style.overflowY = "scroll"
     orderggs.classList.remove("flex")
     orderggs.classList.add("hidden")
 });
+}
 
+if (feedback_remind) {
+
+if (feedback_remind.classList.contains("flex")){
+    body.style.overflowY = "hidden";
+} else {
+    body.style.overflowY = "scroll";
+}
+
+function togglefeedback_remind() {
+    if (feedback_remind.classList.contains("flex")) {
+        hidefeedback_remind();
+    } else {
+        showfeedback_remind();
+    }
+}
+
+// Function to hide the feedback_remind
+function hidefeedback_remind() {
+    feedback_remind.classList.remove("flex");
+    feedback_remind.classList.add("hidden");
+    body.style.overflowY = "scroll";
+    sessionStorage.setItem('feedback_remind', 'gas');
+}
+
+// Function to show the feedback_remind
+function showfeedback_remind() {
+    feedback_remind.classList.remove("hidden");
+    feedback_remind.classList.add("flex");
+    body.style.overflowY = "hidden";
+}
+
+// Event listener for feedback_remind click
+feedback_remind.addEventListener("click", togglefeedback_remind);
+
+feedback_remind_close.addEventListener('click', () => {
+    feedback_remind.style.display = "none";
+    body.style.display = "scroll";
+});
+
+}
 

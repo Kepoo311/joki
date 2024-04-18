@@ -108,6 +108,32 @@
     </section>
     {{-- END --}}
 
+    {{-- FEEDBACK REMINDER --}}
+    @if ($notifCount > 0)
+        <section id="feedback_remind"
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999] flex justify-center items-center min-h-screen w-full bg-[rgba(0,0,0,0.5)]">
+            <div class="bg-white w-96 h-fit pb-10 justify-center rounded-lg flex-col z-[9999]">
+                <div class="text-end justify-end">
+                    <button class="text-2xl mr-2" id="feedback_remind_close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="flex justify-center">
+                    <video class="h-60 w-auto" autoplay loop muted>
+                        <source src="{{ asset('webm/notif.webm') }}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h1 class="text-black font-monts font-semibold text-center text-lg">Hey {{ auth()->user()->username }},
+                    there is {{ $notifCount }} product waiting for your feedback!</h1>
+                <p class="leading-normal font-monts mb-5 text-center">Your feedback is everything to us :)</p>
+
+                <div class="text-center justify-center">
+                    <a class="text-center py-2 px-4 shadow-md mb-5 text-white font-poppins font-semibold text-lg bg-red-600 hover:bg-red-700 rounded-lg"
+                        href="/user/dash">Feedback</a>
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- END --}}
     <section class="relative bg-[#0a0e18] overflow-hidden">
         <div class="absolute h-[15rem] lg:h-[70%] w-[98vw]" id="particles-js"></div>
         <div id="default-carousel" class="w-full overflow-hidden mb-2 mt-2 md:mb-5 md:mt-5" data-carousel="slide">
@@ -125,28 +151,28 @@
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner5.webp') }}" loading="lazy"
+                        <img src="{{ asset('webp/banner5.webp') }}" 
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner1.webp') }}" loading="lazy"
+                        <img src="{{ asset('webp/banner1.webp') }}" 
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner2.webp') }}" loading="lazy"
+                        <img src="{{ asset('webp/banner2.webp') }}" 
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <!-- Item 4 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="/">
-                        <img src="{{ asset('webp/banner3.webp') }}" loading="lazy"
+                        <img src="{{ asset('webp/banner3.webp') }}"
                             class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
@@ -254,20 +280,5 @@
 
 
     {{-- SCRIPT --}}
-    {{-- <script src="{{ asset('jawasc/Popup.js') }}"></script> --}}
-    <script src="{{ asset('jawasc/jawasc.js') }}"></script>
-    <script>
-        const sesi = {{ Session::has('orderGG') }}
-        const popup = document.getElementById('popup_awal')
-        const body = document.body
-
-        if (sesi) {
-            popup.classList.add("hidden");
-            body.style.overflow = "hidden";
-        } else {
-            body.style.overflow = "scroll"
-        }
-    </script>
-    {{-- <script src="{{ asset('jawasc/chat_oke.js') }}"></script>
-     <script src="{{ asset('jawasc/Orderpop.js') }}"></script> --}}
+    <script defer src="{{ asset('jawasc/jawasc.js') }}"></script>
 @endsection

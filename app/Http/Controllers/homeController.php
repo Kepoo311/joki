@@ -8,17 +8,24 @@ use App\Models\LastMsg;
 use App\Models\Order;
 use App\Models\orderDone;
 use App\Models\Product;
+use App\Models\RiviewAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
     public function index(){
+        $notif = 0;
+        if(auth()->user()){
+        $notif = RiviewAuth::where('user_id', '=', auth()->user()->id)->count();
+        }
+
         return view('home.home',[
             'title' => 'Joki Arceus :)',
             'category' => Product::with('game')->get(),
             'product' => Product::all()->find(1),
             'AllProduct' => Product::all(),
+            'notifCount' => $notif,
             'chat'  => chat::all()
         ]);
     }
@@ -53,10 +60,16 @@ class homeController extends Controller
     }
 
     public function show(Product $product){
+        $notif = 0;
+        if(auth()->user()){
+        $notif = RiviewAuth::where('user_id', '=', auth()->user()->id)->count();
+        }
+
         return view('home.home',[
             'title' => $product->name,
             'category' => Product::all(),
             'product' => $product,
+            'notifCount' => $notif,
             'chat'  => chat::all()
         ]);
     }
