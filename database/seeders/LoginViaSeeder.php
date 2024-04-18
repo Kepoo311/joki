@@ -16,37 +16,87 @@ class LoginViaSeeder extends Seeder
         // ML
         LoginVia::create([
             'product_id' => '1',
-            'name' => 'Google'
+            'name' => 'Moonton'
+        ]);
+        LoginVia::create([
+            'product_id' => '1',
+            'name' => 'Facebook'
+        ]);
+        LoginVia::create([
+            'product_id' => '1',
+            'name' => 'TikTok'
+        ]);
+        LoginVia::create([
+            'product_id' => '1',
+            'name' => 'VK'
         ]);
         // VALO
         LoginVia::create([
             'product_id' => '2',
-            'name' => 'Google'
+            'name' => 'Riot'
         ]);
-        // PUBG
         LoginVia::create([
-            'product_id' => '3',
+            'product_id' => '2',
+            'name' => 'Facebook'
+        ]);
+        LoginVia::create([
+            'product_id' => '2',
             'name' => 'Google'
         ]);
         // FF
         LoginVia::create([
+            'product_id' => '3',
+            'name' => 'Facebook'
+        ]);
+        LoginVia::create([
+            'product_id' => '3',
+            'name' => 'Google'
+        ]);
+        LoginVia::create([
+            'product_id' => '3',
+            'name' => 'Twitter'
+        ]);
+        LoginVia::create([
+            'product_id' => '3',
+            'name' => 'VK'
+        ]);
+        // PUBG
+        LoginVia::create([
+            'product_id' => '4',
+            'name' => 'Facebook'
+        ]);
+        LoginVia::create([
             'product_id' => '4',
             'name' => 'Google'
+        ]);
+        LoginVia::create([
+            'product_id' => '4',
+            'name' => 'Twitter'
+        ]);
+    
+        LoginVia::create([
+            'product_id' => '4',
+            'name' => 'Email'
         ]);
         // DOTO
         LoginVia::create([
             'product_id' => '5',
-            'name' => 'Google'
+            'name' => 'Stem'
         ]);
         // CSGO
         LoginVia::create([
             'product_id' => '6',
-            'name' => 'Google'
+            'name' => 'Steam'
         ]);
         // WAR THUNDER
         LoginVia::create([
             'product_id' => '7',
-            'name' => 'Google'
+            'name' => 'Gaijin'
+        ]);
+
+        LoginVia::create([
+            'product_id' => '7',
+            'name' => 'Steam'
         ]);
     }
 }
