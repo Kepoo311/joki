@@ -119,7 +119,7 @@
                         <video class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" autoplay loop
                             muted>
                             <source src="{{ asset('webp/banner4.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
+                            Your browser does not support the video tag..
                         </video>
                     </a>
                 </div>
