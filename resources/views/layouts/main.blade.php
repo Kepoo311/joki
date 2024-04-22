@@ -161,8 +161,8 @@
         </section>
     </main>
 
-    <script defer src="js/particles.js"></script>
-    <script defer src="js/app.js"></script>
+    <script defer src="{{asset("js/particles.js")}}"></script>
+    <script defer src="{{asset("js/app.js")}}"></script>
     <script src="https://kit.fontawesome.com/65fd5af23f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 </body>

@@ -8,7 +8,8 @@
                 <img class="" sizes="100dvw" src="{{ asset('webp/banner_det.webp') }}" alt="">
             </div>
             <div class="flex items-center justify-start overflow-visible bg-[#19304e] h-36">
-                <img class="inline-block shadow-md -skew-y-12 lg:translate-x-36 -translate-y-14 h-auto w-40 rounded-lg m-3"
+                <img id="proCard" data-img-name = "{{ $product->img }}"
+                    class="inline-block shadow-md -skew-y-12 lg:translate-x-36 -translate-y-14 h-auto w-40 rounded-lg m-3"
                     src="{{ asset("proCard/$product->img") }}" alt="">
                 <article class="block -translate-y-5 lg:translate-x-36">
                     <h1 class="inline-block font-nunito font-bold text-2xl text-gray-100">{{ $product->name }}</h1>
@@ -63,7 +64,8 @@
                                 @foreach ($riviews as $riview)
                                     <div class="p-3 mb-3 flex flex-col">
                                         <header class="grid grid-cols-2 font-poppins text-white">
-                                            <p class="text-sm font-bold">{{ Str::limit($riview->noTelp, 4, '********') }}</p>
+                                            <p class="text-sm font-bold">{{ Str::limit($riview->noTelp, 4, '********') }}
+                                            </p>
                                             <p class="text-sm justify-self-end flex">
                                                 @for ($i = 1; $i <= 5; $i++)
                                                     @if ($i <= $riview->bintang)
@@ -127,7 +129,7 @@
                                         <select id="logVia" name="logVia"
                                             class="bg-[#2d558a] border-1 w-full p-2.5 border-blue-800 rounded-md placeholder:text-white">
                                             @foreach ($logins as $login)
-                                            <option value="{{$login->name}}">{{$login->name}}</option>
+                                                <option value="{{ $login->name }}">{{ $login->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('logVia')
@@ -158,8 +160,7 @@
                                         <label class="block mb-2 text-white font-monts font-medium" for="hero">Req Hero
                                             <input
                                                 class="bg-[#2d558a] w-full border-1 border-blue-800 rounded-md font-monts placeholder:text-white placeholder:text-sm"
-                                                type="text" name="reqHero" id="hero"
-                                                placeholder="Your hero....">
+                                                type="text" name="reqHero" id="hero" placeholder="Your hero....">
                                             @error('reqHero')
                                                 {{ $message }}
                                             @enderror
@@ -200,12 +201,14 @@
                                                 <input type="radio" id="{{ $item->name }}" name="paket-joki"
                                                     value="{{ $item->price }},{{ $item->name }}" class="hidden peer"
                                                     required>
-                                                <label for="{{ $item->name }}"
+                                                <label id="item" for="{{ $item->name }}"
                                                     class="inline-flex items-center w-full p-3 bg-[#18304e] text-gray-500 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-4 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-[#1b2d44]">
                                                     <div class="block">
-                                                        <div class="w-full text-md font-poppins font-semibold text-white">
+                                                        <div id="item_name"
+                                                            class="w-full text-md font-poppins font-semibold text-white">
                                                             {{ $item->name }}</div>
-                                                        <div class="w-full text-sm font-poppins font-bold text-blue-500">
+                                                        <div id="item_price"
+                                                            class="w-full text-sm font-poppins font-bold text-blue-500">
                                                             @uang($item->price)</div>
                                                     </div>
                                                     @error('paket-joki')
@@ -292,7 +295,9 @@
                         </main>
                     </section>
 
-                    <section class="w-full h-fit mb-5">
+                    <section class="w-full h-fit mb-5 bg-[#2d558a] rounded-lg">
+                        <div id="receipt" class="w-full h-32 hidden">
+                        </div>
                         <button
                             class="bg-[#19304e] p-3 rounded-lg w-full text-white font-bold font-poppins shadow-md hover:bg-[#1c273e] focus:ring-2 focus:ring-orange-600">Order
                             Now</button>
@@ -359,5 +364,37 @@
         </section>
     </section>
 
+    <script>
+        const items = document.querySelectorAll('#item');
+        const receipt = document.getElementById('receipt');
 
+        items.forEach((item) => {
+            item.addEventListener('click', () => {
+                const proCard = document.getElementById('proCard').dataset.imgName;
+                const item_name = item.querySelector('#item_name').textContent;
+                const item_price = item.querySelector('#item_price').textContent;
+
+                const data = showReceipt(proCard, item_name, item_price);
+
+                if (receipt.classList.contains('hidden')) {
+                    receipt.classList.remove('hidden');
+                    receipt.classList.add('flex');
+                }
+
+                receipt.classList.remove('hidden');
+                receipt.classList.add('flex');
+                receipt.innerHTML = data;
+            });
+        });
+
+        function showReceipt(card, name, price) {
+            return `
+    <img id="receipt_img" class="h-28 w-24 m-3" src="{{ asset('proCard/${card}') }}" alt="GAS">
+                             <div class="flex flex-col mt-2">
+                                <h1 id="receipt_packet" class="text-white font-monts font-semibold">${name}</h1>
+                                <h1 id="receipt_price" class="text-white font-monts font-light">${price}</h1>
+                             </div>
+    `
+        }
+    </script>
 @endsection
