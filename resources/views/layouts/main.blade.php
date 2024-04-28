@@ -37,17 +37,15 @@
                         <div class="z-50 hidden my-4 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600"
                             id="user-dropdown">
                             <div class="px-4 py-3">
-                                <span
-                                    class="block text-sm text-white">{{ auth()->user()->fullname }}</span>
-                                <span
-                                    class="block text-sm truncate text-gray-400">{{ auth()->user()->email }}</span>
+                                <span class="block text-sm text-white">{{ auth()->user()->fullname }}</span>
+                                <span class="block text-sm truncate text-gray-400">{{ auth()->user()->email }}</span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 <li>
                                     <a href="/admin"
                                         class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Dashboard</a>
                                 </li>
-                                @hasrole(['admin','worker'])
+                                @hasrole(['admin', 'worker'])
                                     <li>
                                         <a href="/user/dash"
                                             class="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white">Setting</a>
@@ -118,21 +116,23 @@
                     <div class="grid grid-cols-3 mt-2 xl:col-span-3">
                         <section class="flex flex-col">
                             <h1 class="text-white font-poppins">Social Media Kami:</h1>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
+                            <a class="text-white font-poppins hover:underline" target="_blank"
+                                href="https://www.instagram.com/k4yenggg?igsh=MTM4anFwcWY5bzJpZg=="><i
                                     class="fab fa-instagram"></i> Instagram</a>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
-                                    class="fab fa-tiktok"></i> Tiktok</a>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
+                            <a class="text-white font-poppins hover:underline" target="_blank"
+                                href="https:://www.tiktok.com"><i class="fab fa-tiktok"></i> Tiktok</a>
+                            <a class="text-white font-poppins hover:underline" target="_blank"
+                                href="https://www.youtube.com/channel/UCHx3zkMDH2wdvcsdAeU8YFw"><i
                                     class="fab fa-youtube"></i> Youtube</a>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
-                                    class="fab fa-whatsapp"></i> Whatsapp</a>
+                            <a class="text-white font-poppins hover:underline" target="_blank"
+                                href="https::/www.wa.me/6289633831593"><i class="fab fa-whatsapp"></i> Whatsapp</a>
 
                         </section>
                         <section class="flex flex-col">
                             <h1 class="text-white font-poppins">Peta Situs:</h1>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
+                            <a class="text-white font-poppins hover:underline" href="/"><i
                                     class="fas fa-home"></i> Beranda</a>
-                            <a class="text-white font-poppins hover:underline" href="#"><i
+                            <a class="text-white font-poppins hover:underline" href="/riwayat"><i
                                     class="fas fa-history"></i> Cek riwayat</a>
                         </section>
                         <section class="flex flex-col">
@@ -161,8 +161,8 @@
         </section>
     </main>
 
-    <script defer src="{{asset("js/particles.js")}}"></script>
-    <script defer src="{{asset("js/app.js")}}"></script>
+    <script defer src="{{ asset('js/particles.js') }}"></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/65fd5af23f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 </body>

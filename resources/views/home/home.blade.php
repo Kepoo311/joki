@@ -186,7 +186,9 @@
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
                     data-carousel-slide-to="2"></button>
                 <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                    data-carousel-slide-to="2"></button>
+                    data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                    data-carousel-slide-to="4"></button>
             </div>
             <!-- Slider controls -->
             <button type="button"

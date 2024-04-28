@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-6" >
                 <label class="block mb-2 text-white font-monts text-sm font-medium" for="whatsapp">No. Whatsapp</label>
-                    <input value="{{old("noTelpon")}}" class="@error('noTelp') is-invalid @enderror bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md font-monts text-black" type="tel" pattern="[0-9]" name="noTelpon" id="whatsapp" placeholder="Your whatsapp.... ex: 08123*****">
+                    <input value="{{old("noTelpon")}}" class="@error('noTelp') is-invalid @enderror bg-[rgb(210,180,180)] w-full border-1 border-red-500 rounded-md font-monts text-black" type="tel" name="noTelpon" id="whatsapp" placeholder="Your whatsapp.... ex: 08123*****">
                     @error('noTelpon')
                         <p class="text-red-500 font-bold font-monts">{{$message}}</p>
                     @enderror

@@ -26,7 +26,8 @@
 
         <section class="grid justify-items-center lg:grid-cols-4 gap-4 px-5 py-2">
             <div class="flex flex-col gap-5 col-span-3 lg:col-span-1">
-                <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg">
+                <div class="sticky top-5">
+                <section class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg mb-5">
                     <h1 class="font-poppins font-bold text-white text-3xl text-center pt-5">Cara order joki</h1>
                     <ol class="p-5 font-poppins font-medium text-white">
                         <li>1) Masukkan Data Akun / ID</li>
@@ -97,6 +98,7 @@
                         </main>
                     </div>
                 </section>
+            </div>
             </div>
             <ul class="col-span-3 flex flex-col">
                 <form class="h-fit" action="/order" method="post">
@@ -295,7 +297,7 @@
                         </main>
                     </section>
 
-                    <section class="w-full h-fit mb-5 bg-[#2d558a] rounded-lg">
+                    <section class="max-md:sticky max-md:inset-x-0 max-md:bottom-0 max-md:z-10 w-full h-fit mb-5 bg-[#2d558a] rounded-lg">
                         <div id="receipt" class="w-full h-32 hidden">
                         </div>
                         <button
