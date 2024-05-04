@@ -26,6 +26,8 @@ Route::controller(App\Http\Controllers\homeController::class)->group(function ()
     Route::get("/riwayat",'riwayat');
     Route::get("/{product:name}/atk",'show');
     Route::post('/kirim','kirimpesan');
+
+    Route::post("/SRW",'SearchRiwayat');
 });
 
 Route::post('/order',[OrderController::class,'order']);

@@ -59,6 +59,14 @@ class homeController extends Controller
         ]);
     }
 
+    public function SearchRiwayat(Request $request){
+        $data = Order::where('noTelpon', $request->notelp)
+        ->select('nickname', 'rank', 'status')
+        ->get();
+
+        return response()->json($data);
+    }
+
     public function show(Product $product){
         $notif = 0;
         if(auth()->user()){
