@@ -23,11 +23,13 @@ Joki Arceus is a website for people to rent a jockey service
 
 ## Installation
 
-Please run this first!
+After you clone this project pls to this step
 
 ```bash
   composer update
+make database name joki_db or you can change it from the env
   php artisan serve
+
 ```
     
 ## Tech Stack
