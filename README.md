@@ -28,11 +28,15 @@ After you clone this project pls to this step
 ```bash
   composer update
 make database name joki_db or you can change it from the env
+run php artisan migrate:fresh --seed
 add DISCORD_ALERT_WEBHOOK= to the env, you can fill this with your discord webhook
   php artisan serve
 
 ```
-    
+
+## Account
+**User, Pass:** kepo,12345
+
 ## Tech Stack
 
 **Client:** Laravel, TailwindCSS
