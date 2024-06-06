@@ -72,7 +72,8 @@ class UserDashController extends Controller
 
 
        
-        $lastPP = $user->profil;$profil = $request->file('profil');
+        $lastPP = $user->profil;
+        $profil = $request->file('profil');
         $profil_name = time().'_'.$profil->getClientOriginalName();
         $Oripath = public_path('img/oriPP/');
         $ComPath = public_path('img/ComPP/');
